@@ -19,7 +19,7 @@ window.addEventListener("scroll", () => {
   let current = '';
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
+    
     if (scrollY >= sectionTop - 390) {
       current = section.getAttribute('id');
     }
@@ -77,22 +77,24 @@ sr.reveal(".skills-data", { interval: 100 });
 sr.reveal(".project-img", { interval: 200 });
 
 
-  function myFunction(){
-    var element = document.body;
-    element.classList.toggle("dark-mode")
-  }
+  function myFunction() {
+    const element = document.body;
+    element.classList.toggle("dark-mode");
+}
+
+const messageArr = ["Web Developer", "Frontend Developer", "Backend Developer"];
+let textPosition = 0;
+const speed = 200;
 
 
-  var messageArr = ["Web Developer", "Frontend Developer", "Backend Developer"];
-  var textPosition = 0;
-  var speed = 200;
 
-  typewriter = () => {
+ let typewriter = () => {
+    document.querySelector("#jobTitle").innerHTML = messageArr[0].substring(0, textPosition);
+    if (textPosition++ != messageArr[0].length)
+        setTimeout(typewriter, speed);
+};
 
-    document.querySelector("#jobTitle").innerHTML = messageArr[0].substring(0, textPosition)  ;
-    if(textPosition ++  != messageArr[0].length)
-        setTimeout(typewriter, speed)
-  }
+
 
 
   window.addEventListener("load" , typewriter);
